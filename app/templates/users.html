@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h1>Currently registered users</h1>
+    <hr>
+    <div class="container">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Full name</th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for user in context %}
+          <tr>
+            <td><a href="{{ url_for('users.get_user', id=user.id ) }}">{{ user.username }}</a></td>
+            <td>{{ user.first_name }} {{ user.last_name }}</td>
+            <td>
+                <a href="{{ url_for('users.delete_user', id=user.id ) }}">
+              <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </td>
+          </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    <form action="{{ url_for('users.create_user') }}">
+      <input type="submit" value="Add" class="btn btn-success"/>
+    </form>
+     </div>
+{% endblock %}

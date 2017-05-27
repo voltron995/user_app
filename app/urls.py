@@ -1,4 +1,4 @@
 from . import app
-from .users.urls import users
+from .users import users
 
 app.register_blueprint(users, url_prefix='/users')
