@@ -52,10 +52,7 @@ def create_user():
 
 @users.route('/login', methods=['GET', 'POST'])
 def login():
-    """
-    Handle requests to the /login route
-    Log an employee in through the login form
-    """
+
     form = LoginForm()
     if form.validate_on_submit():
 
@@ -75,10 +72,7 @@ def login():
 @users.route('/logout')
 @login_required
 def logout():
-    """
-    Handle requests to the /logout route
-    Log an employee out through the logout link
-    """
+
     logout_user()
     flash('You have successfully been logged out.')
 

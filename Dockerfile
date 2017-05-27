@@ -1,3 +1,5 @@
+#Dockerfile
+
 FROM python:3-onbuild
 
 ENV PYTHONUNBUFFERED=1
@@ -8,4 +10,6 @@ EXPOSE 8000
 
 ADD . /code/
 
-#CMD ["/start.sh"]
+RUN ["chmod", "+x", "/start.sh"]
+
+CMD ["/start.sh"]

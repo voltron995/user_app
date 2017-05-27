@@ -3,11 +3,13 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
 from flask_login import LoginManager
+from werkzeug.contrib.fixers import ProxyFix
 
 login_manager = LoginManager()
 
 app = Flask(__name__)
 
+# app.wsgi_app = ProxyFix(app.wsgi_app)
 login_manager.init_app(app)
 
 app.config.from_object('app.settings.base')
