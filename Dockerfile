@@ -4,12 +4,8 @@ FROM python:3-onbuild
 
 ENV PYTHONUNBUFFERED=1
 
-COPY start.sh /start.sh
-
 EXPOSE 8000
 
 ADD . /code/
 
-RUN ["chmod", "+x", "/start.sh"]
-
-CMD ["/start.sh"]
+CMD python3 manage.py runserver -h 0.0.0.0 -p 8000
